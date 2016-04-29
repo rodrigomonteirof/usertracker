@@ -1,0 +1,21 @@
+== README
+
+* How to run the application
+
+1 - Run the migrations to create the tables in our database:
+
+rake db:migrate
+
+2 - Run the server:
+
+rails s
+
+* Routes
+
+- GET: http://localhost:3000/events - List with lasted access
+- POST: http://localhost:3000/events - Create event
+- POST: http://localhost:3000/users - Create user
+
+3 - Access the html pages in root project
+
+4 - Check events route

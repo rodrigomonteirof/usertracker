@@ -1,0 +1,42 @@
+<!doctype html>
+  <head>
+    <title>Contato</title>
+  </head>
+  <body>
+    <h1>Contato</h1>
+    <form id="new_user" action="http://localhost:3000/users" method="post">
+      <label>E-mail</label>
+      <input type="text" name="email" />
+      <br>
+      <label>Nome</label>
+      <input type="text" name="nome" />
+      <input type="hidden" name="user_id" id="user_id" />
+      <br>
+      <br>
+      <input type="submit" />
+    </form>
+
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" type="text/javascript"></script>
+    <script src="usertracker.js"></script>
+    <script>
+      $("#new_user").submit(function(e){
+        $("#user_id").val(localStorage.getItem("guid"));
+        var postData = $(this).serializeArray();
+        var formURL = $(this).attr("action");
+
+        $.ajax({
+          url: formURL,
+          type: "POST",
+          data: postData,
+          success: function (data, textStatus, jqXHR){
+            alert("Sucesso!");
+          },
+          error: function (jqXHR, textStatus, errorThrown){
+            alert("Erro!");
+          }
+        });
+        e.preventDefault();
+      });
+    </script>
+  </body>
+</html>
